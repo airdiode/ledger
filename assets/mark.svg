@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="百年账本">
+  <rect width="64" height="64" rx="14" fill="#faf8f2" stroke="#e6ddcd" stroke-width="1"/>
+  <g fill="none" stroke="#8a5a3b" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M19 15 V49" stroke-width="3.4"/>
+    <path d="M26 22 H49" stroke-width="3.4"/>
+    <path d="M26 32 H49" stroke-width="3.4"/>
+    <path d="M26 42 H40" stroke-width="3.4"/>
+  </g>
+  <path d="M13 52 H51" stroke="#8a5a3b" stroke-width="2.4" stroke-linecap="round" stroke-opacity=".38" fill="none"/>
+</svg>

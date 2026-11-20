@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>一块钱 · 百年账本</title>
+<meta name="description" content="1931 年 6 月，青岛，一块银元能买 16.1 斤小米、83 斤盐、233 斤煤。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="一块钱 · 百年账本">
+<meta property="og:description" content="1931 年 6 月，青岛，一块银元能买 16.1 斤小米、83 斤盐、233 斤煤。">
+<meta property="og:url" content="https://airdiode.github.io/ledger/">
+<link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" href="assets/card.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <img src="assets/mark.svg" alt="" width="26" height="26">
+      <span>百年账本</span>
+    </a>
+    <nav>
+      <a href="./">一块钱</a>
+      <a href="timeline.html">时间线</a>
+      <a class="pill" href="https://airdiode.github.io/Fengyu/" target="_blank" rel="noreferrer">风雨如磐 ↗</a>
+      <a class="gh" href="https://github.com/airdiode/ledger">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="card">
+  <p class="when">1931 年 6 月 · 青岛 · 银元</p>
+
+  <h1>一块钱</h1>
+
+  <ul class="equals" id="equals"></ul>
+
+  <p class="note">
+    数字来自当年 6 月的批发物价表，按「一元」折算。同一份表里还有一百多种商品，
+    这五样是当时普通人家过日子的开销。
+  </p>
+
+  <p class="caveat">
+    十四年后，同样一块钱在北平只能买 <b>1.4 斤米</b>。但那已经是另一种钱了——
+    1943 年是法币与联银券，不是银元。<b>两个数字不能直接比。</b>
+  </p>
+
+  <nav class="next">
+    <a href="timeline.html">看这十六斤是怎么变成一点四斤的 →</a>
+  </nav>
+
+  <p class="source">数据：王玉茹《近代中国经济指数数据库》，国家图书馆出版社，2025。</p>
+</main>
+
+<script src="data/basket.js"></script>
+<script>
+(function () {
+  'use strict';
+  var B = window.LEDGER_BASKET;
+  if (!B) return;
+  var s = B.snapshots.filter(function (x) { return x.id === 'qd1931'; })[0];
+  if (!s) return;
+
+  function fmt(v) { return v >= 100 ? v.toFixed(0) : v >= 10 ? v.toFixed(1) : v.toFixed(2); }
+  var host = document.getElementById('equals');
+  host.innerHTML = s.staples.filter(function (it) { return it.cat !== '杂粮'; }).map(function (it) {
+    return '<li><span class="q">= <b>' + fmt(it.o) + '</b> 斤</span>' +
+           '<span class="n">' + it.n + '</span></li>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

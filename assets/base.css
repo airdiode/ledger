@@ -1,0 +1,63 @@
+/* 百年账本 · 共用外壳（页头）
+   形制参照「风雨如磐」顶部：左侧标记 + 站名，右侧导航，底部一条细线。
+   本文件不含 :root 变量，直接引用各页已定义的 --paper / --ink / --rule 等。 */
+
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--rumor, var(--rule));
+}
+@supports not (backdrop-filter: blur(1px)){
+  .site-header{background:var(--paper)}
+}
+
+.site-header .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  height:62px; max-width:1180px; margin:0 auto;
+  padding:0 clamp(16px,3vw,48px);
+}
+
+.brand{
+  display:flex; align-items:center; gap:10px;
+  font-size:18px; letter-spacing:.1em; color:var(--ink);
+  text-decoration:none;
+}
+.brand img{display:block; width:26px; height:26px}
+.brand:hover{text-decoration:none}
+
+.site-header nav{display:flex;align-items:center;gap:22px;font-size:13.5px}
+.site-header nav a{
+  color:var(--ink-soft); text-decoration:none; letter-spacing:.06em;
+  border-bottom:1px solid transparent; padding-bottom:1px;
+}
+.site-header nav a:hover{color:var(--ink);border-bottom-color:var(--rule)}
+.site-header nav a:focus-visible{outline:2px solid #1F6E78;outline-offset:3px}
+
+/* 「风雨如磐」是配套主站，做成胶囊，与其余链接区分 */
+.site-header nav a.pill{
+  color:var(--ink); border:1px solid var(--rule); border-radius:999px;
+  padding:3px 11px; white-space:nowrap;
+}
+.site-header nav a.pill:hover{border-color:var(--ink-faint);border-bottom-color:var(--ink-faint)}
+
+.site-header nav a.gh{color:#8a5a3b}
+.site-header nav a.gh:hover{color:#6d452c;border-bottom-color:#c9b79c}
+
+/* 首屏状态行：与主站「已开放 · 1840 – 1949」对应 */
+.status{
+  max-width:1180px; margin:0 auto;
+  padding:14px clamp(16px,3vw,48px) 0;
+  font-size:11px; letter-spacing:.18em; color:var(--ink-faint);
+  text-transform:uppercase;
+}
+.status b{font-weight:400;color:var(--ink-soft);letter-spacing:.1em}
+
+@media (max-width:640px){
+  .site-header .wrap{height:54px}
+  .brand{font-size:16px;gap:8px}
+  .brand img{width:22px;height:22px}
+  .site-header nav{gap:12px;font-size:12.5px}
+  .site-header nav a.gh{display:none}
+  .status{padding-top:12px;font-size:10px}
+}
