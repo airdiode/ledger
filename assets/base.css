@@ -53,8 +53,19 @@
 }
 .status b{font-weight:400;color:var(--ink-soft);letter-spacing:.1em}
 
+/* 页内锚点：粘性页头会盖住标题，留出滚动余量 */
+@supports (scroll-margin-top: 1px){
+  section[id]{scroll-margin-top:76px}
+}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+}
+
 @media (max-width:640px){
   .site-header .wrap{height:54px}
+  /* 窄屏只留胶囊入口，栏目锚点收起（同主站做法） */
+  .site-header nav a[href^="#"]{display:none}
   .brand{font-size:16px;gap:8px}
   .brand img{width:22px;height:22px}
   .site-header nav{gap:12px;font-size:12.5px}
